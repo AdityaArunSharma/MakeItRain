@@ -1,6 +1,8 @@
 package com.asquarestudios.makeitrain;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import android.view.Window;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -20,7 +22,7 @@ public class MainActivity extends AppCompatActivity
 {
     private int moneyCounter = 0;
     private TextView moneyText;
-    private LinearLayout background;
+    private ConstraintLayout background;
     private Button button_reset;
     long start=0;
     @Override
