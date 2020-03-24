@@ -4,5 +4,6 @@
     <string name="button_incrementMoney">Make it Rain</string>
     <string name="currentMoney"></string>
     <string name="show_tag">Reset</string>
+    <string name="textView_intro">Developed By Aditya Arun Sharma</string>
 
 </resources>

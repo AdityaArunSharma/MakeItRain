@@ -3,12 +3,15 @@ package com.asquarestudios.makeitrain;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
+import android.os.Handler;
 import android.view.Window;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,7 +20,7 @@ import java.text.NumberFormat;
 
 import static android.graphics.Color.RED;
 import static com.asquarestudios.makeitrain.R.layout.activity_main;
-
+import static com.asquarestudios.makeitrain.R.layout.splash_screen;
 public class MainActivity extends AppCompatActivity
 {
     private int moneyCounter = 0;
@@ -25,6 +28,7 @@ public class MainActivity extends AppCompatActivity
     private ConstraintLayout background;
     private Button button_reset;
     long start=0;
+    boolean splashScreen=true;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -45,6 +49,11 @@ public class MainActivity extends AppCompatActivity
             Log.d("", "TIMMING!!!! start = "+start);
             incrementMoney();
             changeBackground();
+          /*  if(splashScreen)
+            {
+                setContentView(R.layout.activity_main);
+                splashScreen=false;
+            }*/
         }
         if(event.getAction()==MotionEvent.ACTION_UP)
         {
