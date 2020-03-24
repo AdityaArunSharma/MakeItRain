@@ -11,9 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -26,14 +24,13 @@ public class MainActivity extends AppCompatActivity
     private int moneyCounter = 0;
     private TextView moneyText;
     private ConstraintLayout background;
-    private Button button_reset;
     long start=0;
-    boolean splashScreen=true;
+    private boolean splashScreen=true;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.splash);
         moneyText = findViewById(R.id.money_text);
         NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
         moneyText.setText(String.valueOf(numberFormat.format(moneyCounter)));
