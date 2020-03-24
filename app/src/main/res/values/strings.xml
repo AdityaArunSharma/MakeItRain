@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MakeItRain</string>
+    <string name="tittle">You Have</string>
+    <string name="button_incrementMoney">Make it Rain</string>
+    <string name="currentMoney"></string>
+    <string name="show_tag">Reset</string>
+
+</resources>
