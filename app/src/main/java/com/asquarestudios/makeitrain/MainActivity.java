@@ -1,109 +1,43 @@
+
+
 package com.asquarestudios.makeitrain;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.content.Intent;
 import android.os.Handler;
-import android.view.Window;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import android.view.WindowManager;
 
-import java.text.NumberFormat;
-
-import static android.graphics.Color.RED;
-import static com.asquarestudios.makeitrain.R.layout.activity_main;
-import static com.asquarestudios.makeitrain.R.layout.splash_screen;
+import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity
 {
-    private int moneyCounter = 0;
-    private TextView moneyText;
-    private ConstraintLayout background;
-    long start=0;
-    private boolean splashScreen=true;
+    private static int SPLASH_SCREEN_TIME_OUT=2000;
+    //After completion of 2000 ms, the next activity will get started.
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //This method is used so that your splash activity
+        //can cover the entire screen.
+
         setContentView(R.layout.splash);
-        moneyText = findViewById(R.id.money_text);
-        NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
-        moneyText.setText(String.valueOf(numberFormat.format(moneyCounter)));
-        background = findViewById(R.id.background);
-    }
+        //this will bind your MainActivity.class file with activity_main.
 
-    public boolean onTouchEvent(MotionEvent event)
-    {
-       // Log.d("onTouchEvent", "Clicked "+event);
-        if(event.getAction()==MotionEvent.ACTION_DOWN)
-        {
-            start=event.getEventTime();
-            Log.d("", "TIMMING!!!! start = "+start);
-            incrementMoney();
-            changeBackground();
-          /*  if(splashScreen)
-            {
-                setContentView(R.layout.activity_main);
-                splashScreen=false;
-            }*/
-        }
-        if(event.getAction()==MotionEvent.ACTION_UP)
-        {
-            long end=event.getEventTime();
-            Log.d("", "TIMMING!!!! end = "+end);
-            long time_eclisped=  ((end-start)/1000);
-            Log.d("Measure", "Time eclipsed = "+(end-start));
-            if((end-start)>=400)
-            {
-                Log.d("onTouchEvent_if", "onTouchEvent: Long Press ");
-                reset();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i=new Intent(MainActivity.this,
+                        splashScreen.class);
+                //Intent is used to switch from one activity to another.
+
+                startActivity(i);
+                //invoke the SecondActivity.
+
+                finish();
+                //the current activity will get finished.
             }
-        }
-        return true;
-    }
-    public void changeBackground()
-    {
-        double red=Math.random();
-        double green=Math.random();
-        double blue=Math.random();
-        int r=(int)(red*255)+1;
-        int g=(int)(green*255)+1;
-        int b=(int)(blue*255)+1;
-        background.setBackgroundColor(Color.rgb(r,g,b));
-        moneyText.setTextColor(Color.rgb(b,r,g));
-    }
-    public void incrementMoney()
-    {
-        NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
-        if(moneyCounter<1000)
-        {
-            moneyCounter+=100;
-        }
-        else if(moneyCounter>=1000 && moneyCounter<10000)
-        {
-            moneyCounter+=1000;
-        }
-        else if(moneyCounter>=10000 && moneyCounter<100000)
-        {
-            moneyCounter+=5000;
-        }
-        else
-        {
-            moneyCounter+=10000;
-        }
-        moneyText.setText(String.valueOf(numberFormat.format(moneyCounter)));
-    }
-    public void reset()
-    {
-
-        moneyCounter=0;
-        NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
-        moneyText.setText(String.valueOf(numberFormat.format(moneyCounter)));
+        }, SPLASH_SCREEN_TIME_OUT);
     }
 }
 

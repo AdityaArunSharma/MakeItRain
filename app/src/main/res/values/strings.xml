@@ -2,8 +2,8 @@
     <string name="app_name">MakeItRain</string>
     <string name="tittle">You Have</string>
     <string name="button_incrementMoney">Make it Rain</string>
-    <string name="currentMoney"></string>
+    <string name="currentMoney">$0</string>
     <string name="show_tag">Reset</string>
-    <string name="textView_intro">Developed By Aditya Arun Sharma</string>
+    <string name="textView_intro"></string>
 
 </resources>
