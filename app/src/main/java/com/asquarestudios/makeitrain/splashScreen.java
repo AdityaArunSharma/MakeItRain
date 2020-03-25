@@ -20,7 +20,6 @@ import java.text.NumberFormat;
 import static android.graphics.Color.RED;
 import static com.asquarestudios.makeitrain.R.layout.activity_main;
 import static com.asquarestudios.makeitrain.R.layout.splash;
-import static com.asquarestudios.makeitrain.R.layout.splash_screen;
 
 public class splashScreen extends AppCompatActivity
 {
